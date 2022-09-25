@@ -1,0 +1,25 @@
+version: "3.4"
+services:
+  poste:
+    image: analogic/poste.io
+    container_name: emailserver
+    hostname: mail.example.com
+    restart: always
+    network_mode: "host"
+    expose:
+      - 25
+      - 80
+      - 443
+      - 110
+      - 143
+      - 465
+      - 587
+      - 993
+      - 995
+    volumes:
+      - /var/mail:/data
+    environment:
+      - HTTPS=ON
+ #     - DISABLE_CLAMAV=TRUE      ##To disable all ClamAV, it is useful for low mem usage.##
+ #     - DISABLE_RSPAMD=TRUE      ##To disable all Rspamd, it is useful for low mem usage ##
+      - e TZ=America/Bogota
